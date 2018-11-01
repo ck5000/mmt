@@ -18,7 +18,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.Timer;
 
 public class UsersFrame {
     Socket socket;
@@ -93,15 +92,8 @@ public class UsersFrame {
         public void actionPerformed(ActionEvent e) {
             String[] params = e.getActionCommand().split(" ");
             String hostname = params[0];
-            String[] usernames = {username, params[1]}; 
-
-            ChatManager cm;
-            try {
-                cm = new ChatManager(hostname, usernames);
-                cm.start();
-            } catch (IOException e1) {
-                statusLabel.setText("Could not connect to that user");
-            }
+            String room = params[1];
+            new GUIClient(hostname, 1000, room, username).setVisible(true);
         }		
     }
 }

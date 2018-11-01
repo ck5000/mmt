@@ -14,7 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 public class MainClient {
-    ChatListener cl;
     Socket cSocket;
     private String hostname;
     private int port;
@@ -78,8 +77,7 @@ public class MainClient {
     }
     
     private void startListening() throws IOException {
-        cl = new ChatListener(username);
-        cl.start();
+        new GUIServer().setVisible(true);
     }
 
     class SubmitButtonListener implements ActionListener {
@@ -108,6 +106,7 @@ public class MainClient {
                     sendUsername();
                     printList();
                     startListening();
+                    startFrame.dispose();
                     } catch (IOException e1) {
                         System.out.println(e1);
                         statusLabel.setText("Could not connect to server");

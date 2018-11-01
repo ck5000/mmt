@@ -22,7 +22,7 @@ public class ClientHandler implements Runnable {
 	}
 
 	public void start() throws IOException {
-		addToList();
+		newMessage();
 		showUsers();
 		if (t==null) {
 			t = new Thread(this);
@@ -55,10 +55,19 @@ public class ClientHandler implements Runnable {
             }
  	}
 
-	private void addToList() throws IOException {
+	private void newMessage() throws IOException {
             BufferedReader inFromUser;
             inFromUser = new BufferedReader(new InputStreamReader(
                             cSocket.getInputStream()));
+//            String[] message = inFromUser.readLine().split("_");
+//            String event = message[0];
+//            switch(event){
+//                case "login": 
+//                    String username;
+//                    username = message[1];
+//                    ps.list.put(hostname, username);
+//                    break;
+//            }
             String username;
             username = inFromUser.readLine();
             ps.list.put(hostname, username);		

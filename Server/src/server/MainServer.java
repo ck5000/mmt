@@ -19,7 +19,6 @@ public class MainServer{
     MainServer() throws IOException {
         serSocket = new ServerSocket(6789);
         list = new HashMap<>();
-        list.put("admin", "admin");
     }
     
     public static void main(String args[]){
